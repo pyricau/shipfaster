@@ -29,31 +29,6 @@
 
   <dependencies>
 
-    <dependency>
-      <groupId>com.google.android</groupId>
-      <artifactId>android</artifactId>
-      <scope>provided</scope>
-      <version>${android.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.inject</groupId>
-      <artifactId>javax.inject</artifactId>
-      <version>${javax.inject.version}</version>
-    </dependency>
-
-    <!-- Square libraries -->
-    <dependency>
-      <groupId>com.squareup.dagger</groupId>
-      <artifactId>dagger</artifactId>
-      <version>${dagger.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.squareup.dagger</groupId>
-      <artifactId>dagger-compiler</artifactId>
-      <version>${dagger.version}</version>
-      <scope>provided</scope>
-    </dependency>
-
     <!-- Test dependencies -->
     <dependency>
       <groupId>junit</groupId>
@@ -86,7 +61,30 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.google.android</groupId>
+      <artifactId>android</artifactId>
+      <scope>provided</scope>
+      <version>${android.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>${javax.inject.version}</version>
+    </dependency>
 
+    <!-- Square libraries -->
+    <dependency>
+      <groupId>com.squareup.dagger</groupId>
+      <artifactId>dagger</artifactId>
+      <version>${dagger.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.squareup.dagger</groupId>
+      <artifactId>dagger-compiler</artifactId>
+      <version>${dagger.version}</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <build>

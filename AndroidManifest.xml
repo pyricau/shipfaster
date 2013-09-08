@@ -12,7 +12,7 @@
       android:icon="@drawable/ic_launcher"
       >
 
-    <activity android:name=".ShipFasterActivity"
+    <activity android:name=".RegisterActivity"
         android:label="@string/app_name">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
