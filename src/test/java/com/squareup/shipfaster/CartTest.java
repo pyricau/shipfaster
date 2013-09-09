@@ -26,4 +26,22 @@ public class CartTest {
     assertThat(cart.canSwipeCard()).isTrue();
   }
 
+  @Test public void auth_when_swipe_success() {
+    prepareCanSwipe();
+
+    cart.onSwipe(new SwipeEvent(true, Card.fakeCard()));
+    assertThat(cart.authStarted()).isTrue();
+  }
+
+  @Test public void no_auth_when_swipe_failed() {
+    prepareCanSwipe();
+
+    cart.onSwipe(new SwipeEvent(false, null));
+    assertThat(cart.authStarted()).isFalse();
+  }
+
+  private void prepareCanSwipe() {
+    when(settings.acceptsCreditCards()).thenReturn(true);
+    cart.addItem(Item.newBanana());
+  }
 }

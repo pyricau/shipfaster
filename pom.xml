@@ -25,6 +25,7 @@
     <fest-android.version>1.0.5</fest-android.version>
     <fest-assert.version>2.0M10</fest-assert.version>
     <robolectric.version>2.0</robolectric.version>
+    <otto.version>2.0-SNAPSHOT</otto.version>
   </properties>
 
   <dependencies>
@@ -60,7 +61,6 @@
       <version>${fest-android.version}</version>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <groupId>com.google.android</groupId>
       <artifactId>android</artifactId>
@@ -84,6 +84,11 @@
       <artifactId>dagger-compiler</artifactId>
       <version>${dagger.version}</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.squareup</groupId>
+      <artifactId>otto</artifactId>
+      <version>${otto.version}</version>
     </dependency>
   </dependencies>
 

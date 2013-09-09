@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">Ship Faster</string>
+  <string name="swipe_success">Swipe success</string>
+  <string name="swipe_failure">Swipe failure</string>
 </resources>
