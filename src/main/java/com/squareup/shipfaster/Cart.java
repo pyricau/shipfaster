@@ -1,23 +1,24 @@
 package com.squareup.shipfaster;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import com.squareup.otto.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
+import javax.inject.Provider;
 import javax.inject.Singleton;
 
 @Singleton
 public class Cart {
 
   private final Settings settings;
-  private final Context context;
+  private final Provider<Activity> resumedActivityProvider;
   private final List<Item> items = new ArrayList<Item>();
 
-  @Inject public Cart(Settings settings, Context context) {
+  @Inject public Cart(Settings settings, Provider<Activity> resumedActivityProvider) {
     this.settings = settings;
-    this.context = context;
+    this.resumedActivityProvider = resumedActivityProvider;
   }
 
   public boolean canSwipeCard() {
@@ -36,7 +37,6 @@ public class Cart {
     items.add(item);
   }
 
-
   @Subscribe public void onSwipe(SwipeEvent event) {
     if (event.successfulSwipe && canSwipeCard()) {
       startAuth(event.card);
@@ -44,9 +44,11 @@ public class Cart {
   }
 
   private void startAuth(Card card) {
-    Intent intent = new Intent(context, AuthActivity.class);
-    intent.putExtra("card", card);
-    context.startActivity(intent);
+    Activity resumedActivity = resumedActivityProvider.get();
+    if (resumedActivity != null) {
+      Intent intent = new Intent(resumedActivity, AuthActivity.class);
+      intent.putExtra("card", card);
+      resumedActivity.startActivity(intent);
+    }
   }
-
 }

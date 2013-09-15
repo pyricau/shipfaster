@@ -1,5 +1,7 @@
 package com.squareup.shipfaster;
 
+import android.os.Handler;
+import android.os.Looper;
 import com.squareup.otto.Bus;
 import java.util.Random;
 import javax.inject.Inject;
@@ -9,6 +11,7 @@ public class CardReader {
   @Inject Bus bus;
 
   private Thread readingThread;
+  private final Handler handler = new Handler(Looper.getMainLooper());
 
   public void start() {
     stop();
@@ -43,11 +46,19 @@ public class CardReader {
     }
   }
 
-  private void onSwipeSuccess(Card card) {
-    bus.postOnMainThread(new SwipeEvent(true, card));
+  private void onSwipeSuccess(final Card card) {
+    handler.post(new Runnable() {
+      @Override public void run() {
+        bus.post(new SwipeEvent(true, card));
+      }
+    });
   }
 
   private void onSwipeFailed() {
-    bus.postOnMainThread((new SwipeEvent(false, null)));
+    handler.post(new Runnable() {
+      @Override public void run() {
+        bus.post(new SwipeEvent(false, null));
+      }
+    });
   }
 }

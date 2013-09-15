@@ -1,8 +1,7 @@
 package com.squareup.shipfaster;
 
 import com.squareup.otto.Bus;
-import com.squareup.otto.DeadEventHandler;
-import com.squareup.otto.TestBus;
+import com.squareup.otto.ThreadEnforcer;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -20,6 +19,6 @@ class TestModule {
   }
 
   @Provides @Singleton Bus provideTestBus() {
-    return new TestBus(DeadEventHandler.IGNORE_DEAD_EVENTS);
+    return new Bus(ThreadEnforcer.ANY);
   }
 }

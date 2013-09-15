@@ -21,8 +21,10 @@ public class CartTest {
   private Activity activity;
 
   @Before public void setUp() {
+    ShipFasterApplication application = new ShipFasterApplication();
     activity = new Activity();
-    ObjectGraph.create(new CartModule(activity), new TestModule()).inject(this);
+    application.setResumedActivity(activity);
+    ObjectGraph.create(new CartModule(application), new TestModule()).inject(this);
     //settings = mock(Settings.class);
     //cart = new Cart(settings);
   }

@@ -9,5 +9,5 @@ import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.CLASS;
 
 @Documented @Target({ METHOD, FIELD}) @Retention(CLASS)
-public @interface RegisterOnBus {
+public @interface RegisterOnResume {
 }
