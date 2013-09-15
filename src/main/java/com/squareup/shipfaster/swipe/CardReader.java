@@ -29,7 +29,7 @@ public class CardReader {
 
           boolean success = random.nextInt(2) == 0;
           if (success) {
-            onSwipeSuccess(Card.fakeCard());
+            onSwipeSuccess(new Card("0987654321098765"));
           } else {
             onSwipeFailed();
           }

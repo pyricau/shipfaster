@@ -2,7 +2,7 @@ package com.squareup.shipfaster.cart;
 
 import android.app.Activity;
 import android.content.Intent;
-import com.squareup.shipfaster.AuthActivity;
+import com.squareup.shipfaster.auth.AuthActivity;
 import com.squareup.shipfaster.base.ShipFasterModule;
 import com.squareup.shipfaster.base.ShipFasterApplication;
 import com.squareup.shipfaster.settings.Settings;

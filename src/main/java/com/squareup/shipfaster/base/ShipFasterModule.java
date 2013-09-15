@@ -3,15 +3,17 @@ package com.squareup.shipfaster.base;
 import android.app.Activity;
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
-import com.squareup.shipfaster.AuthActivity;
+import com.squareup.shipfaster.auth.AuthActivity;
+import com.squareup.shipfaster.cart.CartActivity;
+import com.squareup.shipfaster.auth.AuthClient;
 import com.squareup.shipfaster.cart.Cart;
-import com.squareup.shipfaster.CartActivity;
 import com.squareup.shipfaster.log.EventLogger;
 import com.squareup.shipfaster.settings.FileBackedSettings;
 import com.squareup.shipfaster.settings.Settings;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
+import retrofit.RestAdapter;
 
 import static dagger.Provides.Type.SET;
 
@@ -42,5 +44,13 @@ public class ShipFasterModule {
 
   @Provides Activity provideResumedActivity() {
     return application.getResumedActivity();
+  }
+
+  @Provides RestAdapter provideRestAdapter() {
+    return new RestAdapter.Builder().setServer("https://google.com").build();
+  }
+
+  @Provides AuthClient provideAuthService(RestAdapter restAdapter) {
+    return restAdapter.create(AuthClient.class);
   }
 }

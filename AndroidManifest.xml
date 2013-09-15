@@ -11,13 +11,13 @@
   <application android:label="@string/app_name" android:name=".base.ShipFasterApplication"
       android:icon="@drawable/ic_launcher"
       >
-    <activity android:name=".CartActivity"
+    <activity android:name=".cart.CartActivity"
         android:label="Cart">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-    <activity android:name=".AuthActivity" android:label="Auth"/>
+    <activity android:name=".auth.AuthActivity" android:label="Auth"/>
   </application>
 </manifest>
