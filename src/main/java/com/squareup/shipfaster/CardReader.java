@@ -11,11 +11,12 @@ public class CardReader {
   private Thread readingThread;
 
   public void start() {
+    stop();
     // Simulating reading of cards
     readingThread = new Thread() {
       @Override public void run() {
         Random random = new Random();
-        while(true) {
+        while (true) {
           try {
             Thread.sleep(1000);
           } catch (InterruptedException e) {
@@ -36,8 +37,10 @@ public class CardReader {
   }
 
   public void stop() {
-    readingThread.interrupt();
-    readingThread = null;
+    if (readingThread != null) {
+      readingThread.interrupt();
+      readingThread = null;
+    }
   }
 
   private void onSwipeSuccess(Card card) {
