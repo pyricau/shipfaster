@@ -1,4 +1,4 @@
-package com.squareup.shipfaster;
+package com.squareup.shipfaster.base;
 
 import android.app.Activity;
 import android.app.Application;
@@ -16,7 +16,7 @@ public class ShipFasterApplication extends Application {
   @Override public void onCreate() {
     super.onCreate();
 
-    CartModule module = new CartModule(this);
+    ShipFasterModule module = new ShipFasterModule(this);
     objectGraph = ObjectGraph.create(module);
   }
 

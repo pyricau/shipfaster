@@ -1,7 +1,9 @@
-package com.squareup.shipfaster;
+package com.squareup.shipfaster.cart;
 
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
+import com.squareup.shipfaster.base.ShipFasterModule;
+import com.squareup.shipfaster.settings.Settings;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -9,11 +11,11 @@ import javax.inject.Singleton;
 import static org.mockito.Mockito.mock;
 
 @Module(
-    includes = CartModule.class,
+    includes = ShipFasterModule.class,
     injects = CartTest.class,
-    overrides = true //
-)//
-class TestModule {
+    overrides = true
+)
+class CartTestModule {
   @Provides @Singleton Settings provideSettings() {
     return mock(Settings.class);
   }

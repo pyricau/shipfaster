@@ -1,8 +1,12 @@
-package com.squareup.shipfaster;
+package com.squareup.shipfaster.cart;
 
 import android.app.Activity;
 import android.content.Intent;
 import com.squareup.otto.Subscribe;
+import com.squareup.shipfaster.AuthActivity;
+import com.squareup.shipfaster.settings.Settings;
+import com.squareup.shipfaster.swipe.Card;
+import com.squareup.shipfaster.swipe.SwipeEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;

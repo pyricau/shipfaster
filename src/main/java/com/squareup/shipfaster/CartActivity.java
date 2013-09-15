@@ -2,6 +2,10 @@ package com.squareup.shipfaster;
 
 import android.os.Bundle;
 import android.view.View;
+import com.squareup.shipfaster.base.BaseActivity;
+import com.squareup.shipfaster.cart.Cart;
+import com.squareup.shipfaster.cart.Item;
+import com.squareup.shipfaster.swipe.CardReader;
 import javax.inject.Inject;
 
 public class CartActivity extends BaseActivity {

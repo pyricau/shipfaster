@@ -1,4 +1,4 @@
-package com.squareup.shipfaster;
+package com.squareup.shipfaster.base;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

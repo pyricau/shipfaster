@@ -1,4 +1,4 @@
-package com.squareup.shipfaster;
+package com.squareup.shipfaster.base;
 
 import com.squareup.otto.Bus;
 import java.util.Set;

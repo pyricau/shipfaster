@@ -2,7 +2,7 @@ package com.squareup.shipfaster.log;
 
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
-import com.squareup.shipfaster.SwipeEvent;
+import com.squareup.shipfaster.swipe.SwipeEvent;
 import javax.inject.Inject;
 
 public class EventLogger {

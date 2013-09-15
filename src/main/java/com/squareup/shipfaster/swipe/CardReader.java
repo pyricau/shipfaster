@@ -1,4 +1,4 @@
-package com.squareup.shipfaster;
+package com.squareup.shipfaster.swipe;
 
 import android.os.Handler;
 import android.os.Looper;

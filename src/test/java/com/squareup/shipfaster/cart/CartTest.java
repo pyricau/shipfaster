@@ -1,7 +1,13 @@
-package com.squareup.shipfaster;
+package com.squareup.shipfaster.cart;
 
 import android.app.Activity;
 import android.content.Intent;
+import com.squareup.shipfaster.AuthActivity;
+import com.squareup.shipfaster.base.ShipFasterModule;
+import com.squareup.shipfaster.base.ShipFasterApplication;
+import com.squareup.shipfaster.settings.Settings;
+import com.squareup.shipfaster.swipe.Card;
+import com.squareup.shipfaster.swipe.SwipeEvent;
 import dagger.ObjectGraph;
 import javax.inject.Inject;
 import org.junit.Before;
@@ -24,7 +30,7 @@ public class CartTest {
     ShipFasterApplication application = new ShipFasterApplication();
     activity = new Activity();
     application.setResumedActivity(activity);
-    ObjectGraph.create(new CartModule(application), new TestModule()).inject(this);
+    ObjectGraph.create(new ShipFasterModule(application), new CartTestModule()).inject(this);
     //settings = mock(Settings.class);
     //cart = new Cart(settings);
   }
