@@ -13,9 +13,9 @@ import static dagger.Provides.Type.SET;
 @Module(injects = CartActivity.class)
 public class CartModule {
 
-  Context context;
+  private final Context context;
 
-  public void setContext(Context context) {
+  public CartModule(Context context) {
     this.context= context;
   }
 

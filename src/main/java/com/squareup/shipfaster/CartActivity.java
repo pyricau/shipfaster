@@ -2,6 +2,7 @@ package com.squareup.shipfaster;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import com.squareup.otto.Bus;
 import dagger.ObjectGraph;
 import java.util.Set;
@@ -19,8 +20,7 @@ public class CartActivity extends Activity {
     super.onCreate(savedInstanceState);
 
     // Creation of the object graph
-    CartModule module = new CartModule();
-    module.setContext(this);
+    CartModule module = new CartModule(this);
     ObjectGraph objectGraph = ObjectGraph.create(module);
     objectGraph.inject(this);
 
@@ -30,6 +30,12 @@ public class CartActivity extends Activity {
     }
 
     setContentView(R.layout.cart);
+
+    findViewById(R.id.add_banana).setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View view) {
+        cart.addItem(Item.newBanana());
+      }
+    });
   }
 
   @Override protected void onResume() {

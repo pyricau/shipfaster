@@ -9,6 +9,6 @@ public class FileLogger {
 
   public void add(Log log) {
     // Fake logging.
-    System.out.println(log);
+    System.out.println(log.getMessage());
   }
 }

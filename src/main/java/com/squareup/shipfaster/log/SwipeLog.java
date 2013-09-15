@@ -10,4 +10,5 @@ public class SwipeLog implements Log {
   @Override public String getMessage() {
     return "Swipe success: " + successfulSwipe;
   }
+
 }

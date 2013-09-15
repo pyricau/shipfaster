@@ -32,6 +32,7 @@ public class CardReader {
         }
       }
     };
+    readingThread.start();
   }
 
   public void stop() {

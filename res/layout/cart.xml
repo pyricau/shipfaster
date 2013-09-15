@@ -5,5 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_banana"
+        android:text="Add Banana"
+        />
 
 </LinearLayout>
