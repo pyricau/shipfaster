@@ -2,7 +2,6 @@ package com.squareup.shipfaster;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import com.squareup.otto.Subscribe;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,6 @@ public class Cart {
 
 
   @Subscribe public void onSwipe(SwipeEvent event) {
-    Log.d("YEY", "Success "+event.successfulSwipe + " canSwipe "+canSwipeCard() );
     if (event.successfulSwipe && canSwipeCard()) {
       startAuth(event.card);
     }
