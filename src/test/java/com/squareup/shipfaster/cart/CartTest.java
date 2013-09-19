@@ -2,9 +2,9 @@ package com.squareup.shipfaster.cart;
 
 import android.app.Activity;
 import android.content.Intent;
-import com.squareup.shipfaster.auth.AuthActivity;
-import com.squareup.shipfaster.base.ShipFasterModule;
-import com.squareup.shipfaster.base.ShipFasterApplication;
+import com.squareup.shipfaster.payment.PaymentActivity;
+import com.squareup.shipfaster.common.ShipFasterModule;
+import com.squareup.shipfaster.common.ShipFasterApplication;
 import com.squareup.shipfaster.settings.Settings;
 import com.squareup.shipfaster.swipe.Card;
 import com.squareup.shipfaster.swipe.SwipeEvent;
@@ -38,7 +38,7 @@ public class CartTest {
   @Test public void can_buy_banana_with_card() {
     when(settings.acceptsCreditCards()).thenReturn(true);
 
-    cart.addItem(Item.newBanana());
+    cart.addItem(Item.newFakeItem());
     assertThat(cart.canSwipeCard()).isTrue();
   }
 
@@ -48,7 +48,7 @@ public class CartTest {
     cart.onSwipe(new SwipeEvent(true, Card.fakeCard()));
 
     Intent intent = shadowOf(activity).peekNextStartedActivity();
-    assertThat(intent.getComponent().getClassName()).isEqualTo(AuthActivity.class.getName());
+    assertThat(intent.getComponent().getClassName()).isEqualTo(PaymentActivity.class.getName());
   }
 
   @Test public void no_auth_when_swipe_failed() {
@@ -61,6 +61,6 @@ public class CartTest {
 
   private void prepareCanSwipe() {
     when(settings.acceptsCreditCards()).thenReturn(true);
-    cart.addItem(Item.newBanana());
+    cart.addItem(Item.newFakeItem());
   }
 }

@@ -1,11 +1,12 @@
-package com.squareup.shipfaster.base;
+package com.squareup.shipfaster.common;
 
 import android.app.Activity;
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
-import com.squareup.shipfaster.auth.AuthActivity;
+import com.squareup.shipfaster.BuildConfig;
+import com.squareup.shipfaster.payment.PaymentActivity;
+import com.squareup.shipfaster.payment.PaymentClient;
 import com.squareup.shipfaster.cart.CartActivity;
-import com.squareup.shipfaster.auth.AuthClient;
 import com.squareup.shipfaster.cart.Cart;
 import com.squareup.shipfaster.log.EventLogger;
 import com.squareup.shipfaster.settings.FileBackedSettings;
@@ -17,7 +18,7 @@ import retrofit.RestAdapter;
 
 import static dagger.Provides.Type.SET;
 
-@Module(injects = { CartActivity.class, AuthActivity.class })
+@Module(injects = { CartActivity.class, PaymentActivity.class })
 public class ShipFasterModule {
 
   private final ShipFasterApplication application;
@@ -47,10 +48,15 @@ public class ShipFasterModule {
   }
 
   @Provides RestAdapter provideRestAdapter() {
-    return new RestAdapter.Builder().setServer("https://squareup.com").build();
+    RestAdapter.Builder builder = new RestAdapter.Builder();
+    if (BuildConfig.DEBUG) {
+      builder.setLogLevel(RestAdapter.LogLevel.FULL);
+    }
+    builder.setServer("https://squareup.com");
+    return builder.build();
   }
 
-  @Provides AuthClient provideAuthService(RestAdapter restAdapter) {
-    return restAdapter.create(AuthClient.class);
+  @Provides PaymentClient provideAuthService(RestAdapter restAdapter) {
+    return restAdapter.create(PaymentClient.class);
   }
 }

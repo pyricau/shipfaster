@@ -1,7 +1,8 @@
-package com.squareup.shipfaster.base;
+package com.squareup.shipfaster.common;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import javax.inject.Inject;
 
 public abstract class BaseActivity extends Activity {
@@ -25,5 +26,9 @@ public abstract class BaseActivity extends Activity {
     busRegistrar.unregisterSubscribers();
     application.setResumedActivity(null);
     super.onPause();
+  }
+
+  public <T extends View> T findById(int resId) {
+    return (T) findViewById(resId);
   }
 }

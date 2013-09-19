@@ -1,8 +1,9 @@
 package com.squareup.shipfaster.cart;
 
 import android.app.Activity;
+import android.widget.Toast;
 import com.squareup.otto.Subscribe;
-import com.squareup.shipfaster.auth.AuthActivity;
+import com.squareup.shipfaster.payment.PaymentActivity;
 import com.squareup.shipfaster.settings.Settings;
 import com.squareup.shipfaster.swipe.Card;
 import com.squareup.shipfaster.swipe.SwipeEvent;
@@ -49,7 +50,12 @@ public class Cart {
   private void startAuth(Card card) {
     Activity resumedActivity = resumedActivityProvider.get();
     if (resumedActivity != null) {
-      AuthActivity.start(resumedActivity, card);
+      Toast.makeText(resumedActivity, "Successful swipe!", Toast.LENGTH_SHORT).show();
+      PaymentActivity.start(resumedActivity, card);
     }
+  }
+
+  public void clear() {
+    items.clear();
   }
 }

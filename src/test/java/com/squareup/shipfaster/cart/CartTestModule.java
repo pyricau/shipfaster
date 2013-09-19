@@ -2,7 +2,7 @@ package com.squareup.shipfaster.cart;
 
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
-import com.squareup.shipfaster.base.ShipFasterModule;
+import com.squareup.shipfaster.common.ShipFasterModule;
 import com.squareup.shipfaster.settings.Settings;
 import dagger.Module;
 import dagger.Provides;

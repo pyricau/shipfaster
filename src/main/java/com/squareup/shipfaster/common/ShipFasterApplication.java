@@ -1,4 +1,4 @@
-package com.squareup.shipfaster.base;
+package com.squareup.shipfaster.common;
 
 import android.app.Activity;
 import android.app.Application;
