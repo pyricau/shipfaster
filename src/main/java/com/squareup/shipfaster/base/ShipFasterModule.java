@@ -47,7 +47,7 @@ public class ShipFasterModule {
   }
 
   @Provides RestAdapter provideRestAdapter() {
-    return new RestAdapter.Builder().setServer("https://google.com").build();
+    return new RestAdapter.Builder().setServer("https://squareup.com").build();
   }
 
   @Provides AuthClient provideAuthService(RestAdapter restAdapter) {
