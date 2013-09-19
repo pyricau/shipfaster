@@ -1,7 +1,7 @@
 shipfaster
 ==========
 
-Demo repository for a tech talk
+Sample project for a tech talk, demonstrating usage of Dagger + Otto + Retrofit + Picasso + OkHttp
 
 From the command line, you can build and deploy with:
 
