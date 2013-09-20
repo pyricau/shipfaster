@@ -13,11 +13,11 @@ import javax.inject.Inject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
-import static org.robolectric.Robolectric.shadowOf;
 
 @RunWith(RobolectricTestRunner.class)
 public class CartTest {
@@ -47,8 +47,9 @@ public class CartTest {
 
     cart.onSwipe(new SwipeEvent(true, Card.fakeCard()));
 
-    Intent intent = shadowOf(activity).peekNextStartedActivity();
-    assertThat(intent.getComponent().getClassName()).isEqualTo(PaymentActivity.class.getName());
+    Intent intent = Robolectric.shadowOf(activity).peekNextStartedActivity();
+    String startedActivityName = intent.getComponent().getClassName();
+    assertThat(startedActivityName).isEqualTo(PaymentActivity.class.getName());
   }
 
   @Test public void no_pay_on_swipe_failed() {
@@ -56,7 +57,7 @@ public class CartTest {
 
     cart.onSwipe(new SwipeEvent(false, null));
 
-    assertThat(shadowOf(activity).peekNextStartedActivity()).isNull();
+    assertThat(Robolectric.shadowOf(activity).peekNextStartedActivity()).isNull();
   }
 
   private void prepareCanSwipe() {
