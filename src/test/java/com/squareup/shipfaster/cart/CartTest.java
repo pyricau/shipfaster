@@ -35,14 +35,14 @@ public class CartTest {
     //cart = new Cart(settings);
   }
 
-  @Test public void can_buy_banana_with_card() {
+  @Test public void can_swipe_card_when_accepts_credit_cards() {
     when(settings.acceptsCreditCards()).thenReturn(true);
 
     cart.addItem(Item.newFakeItem());
     assertThat(cart.canSwipeCard()).isTrue();
   }
 
-  @Test public void auth_when_swipe_success() {
+  @Test public void pay_on_swipe_success() {
     prepareCanSwipe();
 
     cart.onSwipe(new SwipeEvent(true, Card.fakeCard()));
@@ -51,7 +51,7 @@ public class CartTest {
     assertThat(intent.getComponent().getClassName()).isEqualTo(PaymentActivity.class.getName());
   }
 
-  @Test public void no_auth_when_swipe_failed() {
+  @Test public void no_pay_on_swipe_failed() {
     prepareCanSwipe();
 
     cart.onSwipe(new SwipeEvent(false, null));
