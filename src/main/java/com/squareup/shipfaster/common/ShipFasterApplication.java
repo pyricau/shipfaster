@@ -2,6 +2,8 @@ package com.squareup.shipfaster.common;
 
 import android.app.Activity;
 import android.app.Application;
+import com.squareup.picasso.Picasso;
+import com.squareup.shipfaster.BuildConfig;
 import dagger.ObjectGraph;
 
 public class ShipFasterApplication extends Application {
@@ -15,6 +17,7 @@ public class ShipFasterApplication extends Application {
 
   @Override public void onCreate() {
     super.onCreate();
+    Picasso.with(this).setDebugging(BuildConfig.DEBUG);
 
     ShipFasterModule module = new ShipFasterModule(this);
     objectGraph = ObjectGraph.create(module);
