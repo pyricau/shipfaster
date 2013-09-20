@@ -2,13 +2,12 @@ package com.squareup.shipfaster.common;
 
 import android.app.Activity;
 import com.squareup.otto.Bus;
-import com.squareup.otto.ThreadEnforcer;
 import com.squareup.shipfaster.BuildConfig;
+import com.squareup.shipfaster.cart.Cart;
+import com.squareup.shipfaster.cart.CartActivity;
+import com.squareup.shipfaster.log.EventLogger;
 import com.squareup.shipfaster.payment.PaymentActivity;
 import com.squareup.shipfaster.payment.PaymentClient;
-import com.squareup.shipfaster.cart.CartActivity;
-import com.squareup.shipfaster.cart.Cart;
-import com.squareup.shipfaster.log.EventLogger;
 import com.squareup.shipfaster.settings.FileBackedSettings;
 import com.squareup.shipfaster.settings.Settings;
 import dagger.Module;
@@ -32,7 +31,7 @@ public class ShipFasterModule {
   }
 
   @Provides @Singleton Bus provideBus() {
-    return new Bus(ThreadEnforcer.MAIN);
+    return new Bus();
   }
 
   @Provides(type = SET) @RegisterOnResume Object registerCart(Cart cart) {
