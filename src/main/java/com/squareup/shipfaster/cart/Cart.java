@@ -43,11 +43,11 @@ public class Cart {
 
   @Subscribe public void onSwipe(SwipeEvent event) {
     if (event.successfulSwipe && canSwipeCard()) {
-      startAuth(event.card);
+      startPayment(event.card);
     }
   }
 
-  private void startAuth(Card card) {
+  private void startPayment(Card card) {
     Activity resumedActivity = resumedActivityProvider.get();
     if (resumedActivity != null) {
       Toast.makeText(resumedActivity, "Successful swipe!", Toast.LENGTH_SHORT).show();
