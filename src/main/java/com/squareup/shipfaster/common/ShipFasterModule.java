@@ -55,7 +55,7 @@ public class ShipFasterModule {
     return builder.build();
   }
 
-  @Provides PaymentClient provideAuthService(RestAdapter restAdapter) {
+  @Provides PaymentClient providePaymentClient(RestAdapter restAdapter) {
     return restAdapter.create(PaymentClient.class);
   }
 }

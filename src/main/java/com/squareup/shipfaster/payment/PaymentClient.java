@@ -9,5 +9,5 @@ import retrofit.http.Path;
 public interface PaymentClient {
 
   @POST("/pay/{amount}")
-  void pay(@Path("amount") int amount, @Body Card card, Callback<PaymentResult> authCallback);
+  void pay(@Path("amount") int amount, @Body Card card, Callback<PaymentResult> callback);
 }

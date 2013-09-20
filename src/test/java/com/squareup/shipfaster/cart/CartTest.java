@@ -31,8 +31,6 @@ public class CartTest {
     activity = new Activity();
     application.setResumedActivity(activity);
     ObjectGraph.create(new ShipFasterModule(application), new CartTestModule()).inject(this);
-    //settings = mock(Settings.class);
-    //cart = new Cart(settings);
   }
 
   @Test public void can_swipe_card_when_accepts_credit_cards() {
