@@ -1,7 +1,9 @@
 shipfaster
 ==========
 
-Sample project for a tech talk, demonstrating usage of Dagger + Otto + Retrofit + Picasso + OkHttp
+Sample project demonstrating usage of Dagger + Otto + Retrofit + Picasso + OkHttp
+
+Inspired from Square's Android codebase. 
 
 From the command line, you can build and deploy with:
 
