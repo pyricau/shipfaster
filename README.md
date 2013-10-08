@@ -1,7 +1,7 @@
 shipfaster
 ==========
 
-Sample project demonstrating usage of Dagger + Otto + Retrofit + Picasso + OkHttp
+Sample project demonstrating usage of Dagger + Otto + Robolectric + Retrofit + Picasso + OkHttp
 
 Inspired from Square's Android codebase. 
 
