@@ -2,25 +2,30 @@ package com.squareup.shipfaster.payment;
 
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
-import com.squareup.shipfaster.common.ShipFasterModule;
 import com.squareup.shipfaster.swipe.Card;
-import dagger.ObjectGraph;
-import javax.inject.Inject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+import retrofit.Callback;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
 public class PaymentTest {
 
-  @Inject PaymentHandler paymentHandler;
-  @Inject Bus bus;
+  PaymentHandler paymentHandler;
+  Bus bus;
 
   @Before public void setUp() {
-    ObjectGraph.create(new ShipFasterModule(null), new PaymentTestModule()).inject(this);
+    bus = new Bus();
+    paymentHandler = new PaymentHandler();
+    paymentHandler.paymentClient = new PaymentClient() {
+      @Override public void pay(int amount, Card card, Callback<PaymentResult> callback) {
+        callback.success(new PaymentResult(), null);
+      }
+    };
+    paymentHandler.bus = bus;
   }
 
   @Test public void payment_handler_sends_success_event() {

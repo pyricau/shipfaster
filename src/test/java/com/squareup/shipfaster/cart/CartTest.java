@@ -3,13 +3,10 @@ package com.squareup.shipfaster.cart;
 import android.app.Activity;
 import android.content.Intent;
 import com.squareup.shipfaster.payment.PaymentActivity;
-import com.squareup.shipfaster.common.ShipFasterModule;
-import com.squareup.shipfaster.common.ShipFasterApplication;
 import com.squareup.shipfaster.settings.Settings;
 import com.squareup.shipfaster.swipe.Card;
 import com.squareup.shipfaster.swipe.SwipeEvent;
-import dagger.ObjectGraph;
-import javax.inject.Inject;
+import javax.inject.Provider;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,20 +14,26 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
 public class CartTest {
 
-  @Inject Cart cart;
-  @Inject Settings settings;
-  private Activity activity;
+  Cart cart;
+  Settings settings;
+  Activity activity;
+
+  Provider<Activity> activityProvider = new Provider<Activity>() {
+    @Override public Activity get() {
+      return activity;
+    }
+  };
 
   @Before public void setUp() {
-    ShipFasterApplication application = new ShipFasterApplication();
     activity = new Activity();
-    application.setResumedActivity(activity);
-    ObjectGraph.create(new ShipFasterModule(application), new CartTestModule()).inject(this);
+    settings = mock(Settings.class);
+    cart = new Cart(settings, activityProvider);
   }
 
   @Test public void can_swipe_card_when_accepts_credit_cards() {
