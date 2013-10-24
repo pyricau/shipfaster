@@ -18,11 +18,11 @@ import retrofit.RestAdapter;
 import static dagger.Provides.Type.SET;
 
 @Module(injects = { CartActivity.class, PaymentActivity.class })
-public class ShipFasterModule {
+public class ProdAppModule {
 
   private final ShipFasterApplication application;
 
-  public ShipFasterModule(ShipFasterApplication application) {
+  public ProdAppModule(ShipFasterApplication application) {
     this.application = application;
   }
 

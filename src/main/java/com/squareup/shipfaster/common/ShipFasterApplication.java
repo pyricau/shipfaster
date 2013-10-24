@@ -19,8 +19,14 @@ public class ShipFasterApplication extends Application {
     super.onCreate();
     Picasso.with(this).setDebugging(BuildConfig.DEBUG);
 
-    ShipFasterModule module = new ShipFasterModule(this);
-    objectGraph = ObjectGraph.create(module);
+    if (BuildConfig.DEBUG) {
+      Object prodModule = new ProdAppModule(this);
+      Object devModule = new DevAppModule();
+      objectGraph = ObjectGraph.create(prodModule, devModule);
+    } else {
+      Object prodModule = new ProdAppModule(this);
+      objectGraph = ObjectGraph.create(prodModule);
+    }
   }
 
   public void inject(Object object) {
