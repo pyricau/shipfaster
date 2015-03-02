@@ -51,7 +51,7 @@ public class ProdAppModule {
     if (BuildConfig.DEBUG) {
       builder.setLogLevel(RestAdapter.LogLevel.FULL);
     }
-    builder.setServer("https://squareup.com");
+    builder.setEndpoint("https://squareup.com");
     return builder.build();
   }
 
