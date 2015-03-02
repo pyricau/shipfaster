@@ -23,7 +23,7 @@ public class OkHttpTest {
     clientProviderField.setAccessible(true);
     Method get = Client.Provider.class.getDeclaredMethod("get");
 
-    RestAdapter adapter = new RestAdapter.Builder().setServer("https://squareup.com").build();
+    RestAdapter adapter = new RestAdapter.Builder().setEndpoint("https://squareup.com").build();
     Object clientProvider = clientProviderField.get(adapter);
     Object client = get.invoke(clientProvider);
 
